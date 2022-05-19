@@ -2,15 +2,30 @@
   <router-view></router-view>
 </template>
 
-<script steup lang="ts">
+
+<script lang="ts">
+import { defineComponent } from "vue";
 import{useLoading} from '@/hooks/loading'
 const { appendLoading, removeLoading } = useLoading()
-appendLoading();
-        setTimeout(()=>{
+export default defineComponent({
+  components: {
+  
+  },
+  setup(props) {
+  
+    appendLoading();
+    setTimeout(()=>{
             removeLoading()
             
         },3000)
+    return {
+  
+    };
+  },
+});
 </script>
+
+
 
 
 <style>

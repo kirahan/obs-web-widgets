@@ -21,7 +21,7 @@
     </span>
     <span class="window-control" >
         <img @click="min" src="@/assets/imgs/icon-small.png" alt="">
-        <img @click="toogle" src="@/assets/imgs/icon-fullscreen.png" alt="">
+        <img  src="@/assets/imgs/icon-fullscreen.png" alt="">
         <img @click="close" src="@/assets/imgs/icon-close.png" alt="">
     </span>
   </div>
