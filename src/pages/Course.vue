@@ -3,8 +3,6 @@
         <div class="course-info-section">
             <div class="page-title">
                 <span>{{pageTitle}}</span>
-                <el-button @click="startRec">开始录制</el-button>
-                <el-button @click="stopRec">停止录制</el-button>
             </div>
             <div class="page-pagination">
                 <el-pagination 
@@ -15,7 +13,7 @@
                 <span>页码：</span>
             </div>
             <div class="skip-right">
-                <a @click="gotoOBS">{{skipText}}</a>
+                <a @click="startRec">{{skipText}}</a>
             </div>
         </div>
         <el-row :gutter="20" class="course-section">
