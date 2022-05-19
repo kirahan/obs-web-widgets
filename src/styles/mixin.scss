@@ -1,0 +1,74 @@
+
+/**
+* flex
+* @param {justify} justify-content: flex-start | flex-end | center | space-between | space-around 
+* @param {align} align-items: flex-start | flex-end | center | baseline | stretch
+* @param {direction} flex-direction: row | row-reverse | column | column-reverse
+*/
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+
+
+
+
+
+/**
+* 重写滚动条样式
+*/
+@mixin scrollBar() {
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 6px;
+    &-track {
+      background-color: transparent;
+      border-radius: 6px;
+    }
+    &-thumb {
+      background-color: #6E7182;
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0.5;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    &-corner {
+      display: none;
+    }
+  }
+}
+
+
+@mixin scrollTreeWidget (){
+  @include scrollBar();
+  border-radius: 10px;
+  background-color: rgba(223, 219, 219, 0.505);
+  width:100%;
+  box-sizing: border-box;
+  flex-grow:1;
+  margin: 5px;
+  }
+
+
+
+@mixin obsInput(){
+  &{
+    height: 48px;
+    width: 100%;
+    box-sizing:border-box;
+    border-radius: 10px;
+    border: 1px #7D8592 solid;
+    font-size: 18px;
+    padding-left: 10px;
+    outline: none;
+    &:focus-within{
+      border: 2px #37b8f9 solid ;
+    }
+  }
+}
