@@ -16,16 +16,19 @@ const routes = [
 
 
 const router = createRouter({
-    history: createWebHistory('/'),
+    history: createWebHistory('/obs-web-widgets'),
     routes
 })
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
     if (to.path === '/login') return next()
+    
     // 查看token是否存在
+    console.log('to.path',to.path)
     const token = loginToken.value
     if (!token) return next('/login')
+    if (to.path === '/') return next('/course') 
     next()
 })
 

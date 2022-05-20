@@ -50,6 +50,8 @@ export default defineComponent({
 
         const startRec = ()=>{
             // window.obsstudio.startRecording()
+            // @ts-ignore
+             window.obsstudio.kira('min');
              console.log('window.obsstudio.startRecording()')
         }
         const stopRec = ()=>{

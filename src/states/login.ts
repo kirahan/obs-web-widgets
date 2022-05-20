@@ -16,8 +16,8 @@ export const openlink = (link: string) => {
   };
 
 export const gotoLoginPage = () => {
-    // router.push('/login')
-    router.back()
+    router.push('/login')
+    // router.back()
 }
 
 
