@@ -1,4 +1,5 @@
 import { axiso_get } from "@/hooks/axios"
+import { RemovableRef, useStorage } from "@vueuse/core"
 import { reactive } from "vue"
 
 export const courseLists:I_CourseVueData[] = reactive([])
@@ -37,6 +38,29 @@ export const getCourse = (page:number=1)=>{
 
 export const  paginationChangePage = (currentPage:number)=>{
     getCourse(currentPage)
+}
+
+export const storageLivePush:RemovableRef<IStorageLivePush> = useStorage('livePush',{service:'',key:'',timestamp:Date.now()})
+
+export const setStorageLivePushNone = () =>{
+    storageLivePush.value = {
+        service:'',key:'',timestamp: Date.now()
+    }
+}
+
+export const setStorageLivePush = (courseData:I_CourseVueData) => {
+   let [service,key] = courseData.livePush.split('?')
+   if(!service) return
+   key = '?' + key
+   storageLivePush.value = {
+       service,key,timestamp: Date.now()
+   }
+}
+
+interface IStorageLivePush {
+    service:string,
+    key:string,
+    timestamp?:number
 }
 
 export interface IpaginationData{

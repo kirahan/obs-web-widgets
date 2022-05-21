@@ -13,22 +13,21 @@
                 <span>页码：</span>
             </div>
             <div class="skip-right">
-                <a @click="startRec">{{skipText}}</a>
+                <a @click="justGoToOBS">{{skipText}}</a>
             </div>
         </div>
         <el-row :gutter="20" class="course-section">
             <el-col :span="6" class="course-card-container"  v-for="course in courseLists" :key="course.courseId">
-                    <CourseCard :courseData="course"></CourseCard>
+                    <CourseCard @click="setLivePUSHandGoToOBS(course)" :courseData="course"></CourseCard>
             </el-col>
         </el-row>
     </div>
 </template>
 
 <script lang="ts">
-import { courseLists, getCourse, paginationData, paginationChangePage } from '@/states'
+import { courseLists, getCourse, paginationData, paginationChangePage,gotoOBSmainwindow, I_CourseVueData,setStorageLivePush,setStorageLivePushNone } from '@/states'
 import { defineComponent, reactive, toRefs } from 'vue'
 import CourseCard from '@/components/Course/mycard.vue'
-import { useRouter } from 'vue-router'
 
 
 export default defineComponent({
@@ -40,22 +39,17 @@ export default defineComponent({
             pageTitle: '请选择直播课程',
             skipText: '直接推流',
         })
-        const $router = useRouter();
 
-        const gotoOBS =()=>{
-            $router.push('/mainwindow')
-        }
-        
         getCourse()
 
-        const startRec = ()=>{
-            // window.obsstudio.startRecording()
-            // @ts-ignore
-             window.obsstudio.kira('min');
-             console.log('window.obsstudio.startRecording()')
+        const justGoToOBS = ()=>{
+            setStorageLivePushNone()
+            gotoOBSmainwindow()
         }
-        const stopRec = ()=>{
-            console.log('window.obsstudio.stopRecording()')
+
+        const setLivePUSHandGoToOBS = (courseData:I_CourseVueData) => {
+            setStorageLivePush(courseData)
+            gotoOBSmainwindow()
         }
 
         return {
@@ -63,9 +57,9 @@ export default defineComponent({
             courseLists,
             paginationData,
             paginationChangePage,
-            gotoOBS,
-            startRec,
-            stopRec
+            gotoOBSmainwindow,
+            justGoToOBS,
+            setLivePUSHandGoToOBS
         }
     },
 })

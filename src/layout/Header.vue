@@ -20,29 +20,24 @@
       <img src="@/assets/imgs/icon-help.png" @click="openlink('https:www.baidu.com')" alt="" >
     </span>
     <span class="window-control" >
-        <img @click="min" src="@/assets/imgs/icon-small.png" alt="">
-        <img  src="@/assets/imgs/icon-fullscreen.png" alt="">
-        <img @click="close" src="@/assets/imgs/icon-close.png" alt="">
+        <img @click="loginWindowMin" src="@/assets/imgs/icon-small.png" alt="">
+        <!-- <img  src="@/assets/imgs/icon-fullscreen.png" alt=""> -->
+        <img @click="obsWindowClose" src="@/assets/imgs/icon-close.png" alt="">
     </span>
   </div>
 </template>
 
 <script lang="ts" >
-import { logout, username, gotoLoginPage, openlink } from '@/states'
+import { logout, username, gotoLoginPage, openlink,loginWindowMin,obsWindowClose } from '@/states'
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   setup(){
 
-    const min =()=>{
-    }
-
-    const close =()=>{
-    }
-
+    
 
     return {
-      min,
-      close,
+      loginWindowMin,
+      obsWindowClose,
       username,
       logout,
       gotoLoginPage,
