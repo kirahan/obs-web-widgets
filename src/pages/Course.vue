@@ -5,12 +5,12 @@
                 <div>{{pageTitle}}</div>
             </div>
             <div class="skip-right">
-                <a @click="justGoToOBS">{{skipText}}</a>
+                <a @click="gotoOBSmainwindow()">{{skipText}}</a>
             </div>
         </div>
         <el-row :gutter="20" class="course-section">
             <el-col :span="6" class="course-card-container"  v-for="course in courseLists" :key="course.courseId">
-                    <CourseCard @click="setLivePUSHandGoToOBS(course)" :courseData="course"></CourseCard>
+                    <CourseCard @click="gotoOBSmainwindow(course)" :courseData="course"></CourseCard>
             </el-col>
         </el-row>
         <div class="page-pagination">
@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { courseLists, getCourse, paginationData, paginationChangePage,gotoOBSmainwindow, I_CourseVueData,setStorageLivePush,setStorageLivePushNone } from '@/states'
+import { courseLists, getCourse, paginationData, paginationChangePage,gotoOBSmainwindow } from '@/states'
 import { defineComponent, reactive, toRefs } from 'vue'
 import CourseCard from '@/components/Course/mycard.vue'
 
@@ -41,15 +41,7 @@ export default defineComponent({
 
         getCourse()
 
-        const justGoToOBS = ()=>{
-            setStorageLivePushNone()
-            gotoOBSmainwindow()
-        }
 
-        const setLivePUSHandGoToOBS = (courseData:I_CourseVueData) => {
-            setStorageLivePush(courseData)
-            gotoOBSmainwindow()
-        }
 
         return {
             ...toRefs(data),
@@ -57,8 +49,6 @@ export default defineComponent({
             paginationData,
             paginationChangePage,
             gotoOBSmainwindow,
-            justGoToOBS,
-            setLivePUSHandGoToOBS
         }
     },
 })
@@ -68,10 +58,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 .course-container{
     box-sizing: border-box;
+    @include flex(space-evenly,center,column);
+    height: 100%;
     // overflow: hidden;
     .course-info-section{
         text-align: center;
-        padding-left: 10%;
         width: 80%;
         // @include flex(center,center,row);
         height:50px;

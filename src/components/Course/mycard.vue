@@ -78,7 +78,7 @@ export default defineComponent({
     border-radius: 16px;
     box-shadow: 0px 5px 5px #c8c8c8;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     .img-section,.text-section{
         padding: 10px;
     }
