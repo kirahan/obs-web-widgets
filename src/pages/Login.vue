@@ -3,7 +3,7 @@
     <div class="login-left">
       <div class="logo-group">
         <img class="logo" src="@/assets/logo.png" />
-        <span>xx直播小助手</span>
+        <span>视联医疗直播助手</span>
       </div>
       <div class="pw-group">
         <p class="title">密码登录</p>
@@ -33,10 +33,7 @@
           登录
           <el-icon><right /></el-icon>
         </el-button>
-        <!-- <a target="_blank" href="https:/www.baidu.com">注册账号</a> -->
-        <span class="submit-btn" @click="openlink('https://www.baidu.com')">注册账号</span>
-        <!-- <a href="" target="about_blank"></a> -->
-        <!-- <el-button type="text" @click="openlink">注册账号</el-button> -->
+        <!-- <span class="submit-btn" @click="openlink('https://www.baidu.com')">注册账号</span> -->
       </div>
     </div>
 
@@ -125,7 +122,7 @@ export default defineComponent({
     height: 1024px;
     width: 593px;
     background-color: white;
-    border-radius: 0px 54px 54px 0px;
+    // border-radius: 0px 54px 54px 0px;
     box-shadow: 10px 20px 50px rgba(134, 240, 161, 0.2);
     .logo-group {
       height: 20%;
