@@ -1,7 +1,7 @@
 <template>
 <div class="course-card">
     <div class="img-section">
-        <el-tag
+        <!-- <el-tag
             v-if="courseData.liveState!=undefined"
             :key="courseData.liveState"
             :type="
@@ -21,8 +21,8 @@
                     :courseData.liveState==3?'回放'
                     :'已结束' 
             }}
-            </el-tag>
-        <el-tag
+            </el-tag> -->
+        <!-- <el-tag
         :key="courseData.viewCount"
         color="RGBA(36, 48, 99, 0.25)"
         class="mx-1 course-viewcout"
@@ -34,7 +34,7 @@
         {{ 
                 courseData.viewCount==0?'999':courseData.viewCount
         }}
-        </el-tag>
+        </el-tag> -->
         <el-image class="image" :src="courseData.coverUrl" fit="cover">
         </el-image>
         <!-- <img
@@ -45,7 +45,7 @@
         
     </div>
     <div class="text-section">
-        <span class="course-title">{{courseData.courseTitle}}</span>
+        <div class="course-title">{{courseData.courseTitle}}</div>
           <div class="course-time">
             <time class="time-content">直播时间: {{ courseData.liveStartTime}}</time>
           </div>
@@ -78,7 +78,7 @@ export default defineComponent({
     border-radius: 16px;
     box-shadow: 0px 5px 5px #c8c8c8;
     cursor: pointer;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     .img-section,.text-section{
         padding: 10px;
     }
@@ -112,15 +112,19 @@ export default defineComponent({
     }
     .text-section{
         padding-top: 0px;
+        text-align:left;
         .course-title{
             font-size: 16px;
             font-weight: bold;
-            padding-bottom: 10px;
+            // padding-bottom: 10px;
+            width:100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .course-time{
-            padding-top: 10px;
+            padding-top: 5px;
             font-size: 14px;
-            text-align: left;
             color: #91929E;
         }
     }

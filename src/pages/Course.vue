@@ -2,15 +2,7 @@
     <div class="course-container">
         <div class="course-info-section">
             <div class="page-title">
-                <span>{{pageTitle}}</span>
-            </div>
-            <div class="page-pagination">
-                <el-pagination 
-                layout="prev, pager, next" 
-                @current-change="paginationChangePage"
-                :page-size="paginationData.pageSize"
-                :total="paginationData.total" />
-                <span>页码：</span>
+                <div>{{pageTitle}}</div>
             </div>
             <div class="skip-right">
                 <a @click="justGoToOBS">{{skipText}}</a>
@@ -21,6 +13,13 @@
                     <CourseCard @click="setLivePUSHandGoToOBS(course)" :courseData="course"></CourseCard>
             </el-col>
         </el-row>
+        <div class="page-pagination">
+                <el-pagination 
+                layout="prev, pager, next" 
+                @current-change="paginationChangePage"
+                :page-size="paginationData.pageSize"
+                :total="paginationData.total" />
+        </div>
     </div>
 </template>
 
@@ -74,34 +73,28 @@ export default defineComponent({
         text-align: center;
         padding-left: 10%;
         width: 80%;
-        @include flex(center,center,row);
-        height:80px;
+        // @include flex(center,center,row);
+        height:50px;
         .page-title{
-            flex: 1;
-            // display: inline-block;
-            span{
+            @include flex(center,center,row);
+            div{
+                User-select:none;
                 font-size: 16px;
-                color: #91929E;
-                padding: 9px 124px;
-                border: 2px dashed #CED5E0;
-                border-radius:50px;
-                margin-top: 10px;
+                display: flex;
+                padding: 10px;
+            }
+            div::before, div::after{
+                content: "";
+                width:50px;
+                border-bottom: 1px solid #000;
+                margin: auto 10px;
             }
             
         }
-        .page-pagination{
-            span{
-                line-height: 36px;
-            }
-            flex:0 0 auto;
-            display: flex;
-            flex-direction:row-reverse;
-            padding-right: 20px;
-            min-width: 20%;
-            // display: inline-block;
-        }
         .skip-right{
-            flex:0 0 auto;
+            position: absolute;
+            right: 30px;
+            top: 67px;
             a{
                 color: #3F8CFF;
                 cursor: pointer;
@@ -114,7 +107,14 @@ export default defineComponent({
     .course-card-container{
         @include flex(center,course,row)
     }
-}
+    }
+    .page-pagination{
+            span{
+                line-height: 36px;
+            }
+            @include flex(center, center, row)
+            // display: inline-block;
+    }
 }
 
 </style>
