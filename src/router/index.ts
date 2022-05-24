@@ -1,5 +1,5 @@
 import { loginToken } from '@/states'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory,createWebHashHistory  } from 'vue-router'
 import Worker from '@/pages/Worker.vue'
 import Login from '@/pages/Login.vue'
 import Course from '@/pages/Course.vue'
@@ -18,7 +18,8 @@ const routes = [
 
 
 const router = createRouter({
-    history: createWebHistory('/obs-web-widgets'),
+    // history: createWebHistory('/obs-web-widgets'),
+    history: createWebHashHistory('/obs-web-widgets'),
     routes
 })
 
