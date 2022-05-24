@@ -95,6 +95,7 @@ export default defineComponent({
     .course-section{
     // padding: 20px 20px!important;
     // margin: 0px 0px!important;
+    width: 100%;
     .course-card-container{
         @include flex(center,course,row)
     }
