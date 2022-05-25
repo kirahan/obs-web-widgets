@@ -73,7 +73,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .course-card{
-    width: 285px;
+    width: 260px;
     background-color:white;
     border-radius: 16px;
     box-shadow: 0px 5px 5px #c8c8c8;

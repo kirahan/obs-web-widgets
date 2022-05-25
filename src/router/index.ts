@@ -8,10 +8,11 @@ const routes = [
     { 
     path: '/', name: 'Course', component: Layout, 
     children: [
+        { path: '/login', name: 'Login', component: Login },
         { path: '/course', name: '课程列表', component: Course },
     ]
     },
-    { path: '/login', name: 'Login', component: Login },
+    
     { path: '/worker', name: 'Worker', component: Worker },
     
 ]

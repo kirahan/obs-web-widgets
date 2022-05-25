@@ -17,7 +17,7 @@ export default defineComponent({
     setTimeout(()=>{
             removeLoading()
             
-        },3000)
+        },1000)
     return {
   
     };
@@ -36,7 +36,9 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   background-color: #E8F1FF;
-  height: 100vh;
+  /* height: 100vh; */
+  width:1115px;
+  height:942px;
 }
 body {
     overflow: hidden;

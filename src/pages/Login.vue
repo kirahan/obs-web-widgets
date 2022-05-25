@@ -2,26 +2,22 @@
   <div class="container">
     <div class="login-left">
       <div class="logo-group">
-        <img class="logo" src="@/assets/logo.png" />
-        <span>视联医疗直播助手</span>
+        <span>欢迎使用直播助手</span>
       </div>
       <div class="pw-group">
-        <p class="title">密码登录</p>
         <div class="input-group">
-          <p class="input-title">账号</p>
           <input
             v-model="account"
             class="inputarea"
-            placeholder="请输入手机号"
+            placeholder="账号"
           />
         </div>
         <div class="input-group">
-          <p class="input-title">密码</p>
           <input
             v-model="password"
             type="password"
             class="inputarea"
-            placeholder="请点击获取验证码并填写"
+            placeholder="密码"
           />
         </div>
         <div class="auto-login-group">
@@ -31,13 +27,13 @@
       <div class="action-group">
         <el-button @click="login" type="primary" class="login-btn">
           登录
-          <el-icon><right /></el-icon>
         </el-button>
         <!-- <span class="submit-btn" @click="openlink('https://www.baidu.com')">注册账号</span> -->
       </div>
     </div>
 
-    <div class="login-right">
+    <div class="login-bottom">
+      <img src="@/assets/logo-r.png" alt="">
     </div>
   </div>
 </template>
@@ -55,7 +51,7 @@ export default defineComponent({
   },
   setup(props) {
     const data = reactive({
-      account: "15212341234",
+      account: "admin",
       password: "123456",
       auto_login: false,
     });
@@ -112,28 +108,29 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .container {
-  width: 1366px;
-  height: 1024px;
-  right: 0%;
+  // width: 1366px;
+  // height: 1024px;
+  height:100%;
+  background: url(@/assets/bg2.jpg) no-repeat;
+  background-size:cover;
   .login-left {
-    z-index: 9;
-    position: absolute;
-    @include flex(center, center, column);
-    height: 1024px;
-    width: 593px;
+    @include flex(space-evenly, center, column);
+    margin:auto;
+    height: 400px;
+    width: 500px;
     background-color: white;
-    // border-radius: 0px 54px 54px 0px;
+    border-radius: 10px;
     box-shadow: 10px 20px 50px rgba(134, 240, 161, 0.2);
     .logo-group {
-      height: 20%;
-      width: 400px;
+      height: 10%;
+      width: 300px;
       @include flex(space-evenly, center, row);
       .logo {
         width: 108px;
         height: 108px;
       }
       span {
-        font-size: 36px;
+        font-size: 28px;
         color: #3f8cff;
         font-family: Arial, Helvetica, sans-serif;
       }
@@ -143,35 +140,9 @@ export default defineComponent({
       div {
         padding: 10px 0px;
       }
-      .title {
-        font-size: 20px;
-        color: #3f8cff;
-      }
-      .title:before {
-        position: relative;
-        z-index: 1;
-        top: 13px;
-        left: 55px;
-        width: 30px;
-        display: inline-block;
-        height: 4px;
-        background-color: #3f8cff;
-        content: "";
-      }
-      .title:after {
-        position: relative;
-        z-index: 1;
-        top: 13px;
-        // left: 50px;
-        width: 30px;
-        display: inline-block;
-        // height: 4px;
-        background-color: #3f8cff;
-        content: "";
-      }
       .input-group {
         text-align: left;
-        width: 420px;
+        // width: 320px;
 
         .input-title {
           font-size: 14px;
@@ -193,10 +164,11 @@ export default defineComponent({
     }
     .action-group {
       height: 10%;
-      width: 420px;
+      width: 300px;
       @include flex(center, center, column);
       .login-btn {
         min-width: 100%;
+        height:48px;
       }
       .submit-btn{
           padding-top: 10px;
@@ -208,14 +180,19 @@ export default defineComponent({
       }
     }
   }
-  .login-right {
-        position: absolute;
-        right: 0%;
-        width: 876px;
-        height: 1024px;
-        padding-left: -30px;
-        background-color: rgb(118, 122, 119);
-        background-image: url(@/assets/bg.png);
+
+  .login-bottom{
+    position:absolute;
+    right: 80px;
+    bottom: 80px;
+    width:100px;
+    height: 100px;
+    background-color:grey;
+    img{
+      width: 50px;
+      height: 50px;
+      padding: 25px;
     }
+  }
 }
 </style>

@@ -7,17 +7,7 @@
       <img class="logo" @click="gotoLoginPage" src="@/assets/imgs/icon-back.png" alt="">
     </span> -->
     <span class="title-section">视联医疗直播助手</span>
-    <span class="user">
-      <el-tooltip content="退出登录" placement="bottom" effect="light">
-          <img @click="logout" src="@/assets/imgs/icon-user.png" alt="" />
-      </el-tooltip>
-      <!-- <div class="logout" @click="logout">
-        <img src="@/assets/imgs/icon-logout.png" alt="" />
-        <span>退出</span>
-      </div> -->
-      <!-- <span>用户:</span> -->
-      <!-- <span>{{username}}</span> -->
-    </span>
+    
     <!-- <span class="help">
       
       <img src="@/assets/imgs/icon-help.png" @click="openlink('https:www.baidu.com')" alt="" >
@@ -36,19 +26,24 @@ import {
   username,
   gotoLoginPage,
   openlink,
+  loginToken,
   loginWindowMin,
   obsWindowClose,
+userAvatar
 } from "@/states";
 import { defineComponent, ref } from "vue";
 export default defineComponent({
   setup() {
+
     return {
       loginWindowMin,
       obsWindowClose,
       username,
       logout,
+      loginToken,
       gotoLoginPage,
       openlink,
+      userAvatar
     };
   },
 });
@@ -57,16 +52,16 @@ export default defineComponent({
 <style lang="scss" scoped>
 .header {
   background-color: white;
-  height: 56px;
-  line-height: 56px;
+  height: 32px;
+  line-height: 32px;
   -webkit-app-region: drag;
   justify-content: space-between;
   display: flex;
-  padding: 0 8px 0 14px;
+  padding: 0 8px 0 4px;
   font-size: 16px;
   .logo-section,
   .action-section {
-    width: 50px;
+    width: 40px;
   }
   .title-section {
     //  width:50%;
@@ -76,11 +71,12 @@ export default defineComponent({
     flex-grow: 1;
   }
   .user {
-    width: 100px;
+    width: 250px;
     @include flex(center, center, row);
     img {
-      width: 30px;
-      height: 30px;
+      padding-left: 20px;
+      width: 24px;
+      height: 24px;
       cursor: pointer;
     }
     .logout {
@@ -127,11 +123,29 @@ export default defineComponent({
     }
   }
   .logo {
-    height: 30px;
-    width: 30px;
+    height: 24px;
+    width: 24px;
     cursor: pointer;
     -webkit-app-region: no-drag;
-    padding-top: 13px;
+    padding-top: 4px;
   }
 }
+
+.user-logout-btn.el-button{
+  width:100%;
+}
 </style>
+
+
+<!-- <style lang="scss">
+.app-body{
+.el-popover.el-popper{
+  min-width: 50!important;
+  width: 100px !important;
+}
+.user-logout-btn.el-button{
+  width:100%;
+}
+}
+
+</style> -->

@@ -45,6 +45,40 @@ export const  gotoOBSmainwindow = (courseData?:I_CourseVueData)=>{
     
 }
 
+export const onWorkMessage = (e:any) => {
+    const data = e.data;
+    const text = '[receive] ' + data.data;
+    
+    if(data.command=='min'){
+        console.log('[BroadcastChannel] receive message:', text,'command:kiramin');
+        // @ts-ignore
+        window.obsstudio.kiramin()
+    }else if(data.command=='close'){
+        console.log('[BroadcastChannel] receive message:', text,'command:kiraclose');
+        // @ts-ignore
+        window.obsstudio.kiraclose()
+    }else if(data.command=='gotoOBS'){
+        console.log('[BroadcastChannel] receive message:', text,'command:gotoOBS');
+        const courseData:I_CourseVueData = JSON.parse(data.data);
+
+        // @ts-ignore
+        if(Object.getOwnPropertyNames(courseData).length==0){
+            // @ts-ignore
+            window.obsstudio.kiraGoToOBS()
+            
+        }else{
+            let [service,key] = courseData.livePush.split('live/')
+            // 去除过长的标题
+            const courseTitle = courseData.courseTitle.length>16 ?courseData.courseTitle.slice(0,16)+"..." : courseData.courseTitle
+            const courseDate = courseData.liveStartTime 
+            service = service + 'live/' 
+            console.log(service,key,courseTitle,courseDate);
+            // @ts-ignore
+            window.obsstudio.kiraGoToOBS(service,key,courseTitle,courseDate)
+        }
+    }
+}
+
 
 
 

@@ -1,6 +1,6 @@
 import { axiso_get } from "@/hooks/axios"
 import { RemovableRef, useStorage } from "@vueuse/core"
-import { reactive } from "vue"
+import { reactive, Ref, ref } from "vue"
 
 export const courseLists:I_CourseVueData[] = reactive([])
 export const paginationData:IpaginationData = reactive({
@@ -8,6 +8,17 @@ export const paginationData:IpaginationData = reactive({
     total:0,
     currentPage:1
 })
+
+export const userProfile:Ref<IuserProfile | {}> = ref({})
+export const userAvatar = useStorage('useravatar','')
+
+export const getProfile = ()=>{
+    axiso_get('api/v1/profile').then((res:any)=>{
+        userProfile.value = res
+        userAvatar.value = res.avatar
+        console.log('userAvatar',res)
+    })
+}
 
 export const getCourse = (page:number=1)=>{
     axiso_get('/api/v1/course-list',{
@@ -55,6 +66,31 @@ export const setStorageLivePush = (courseData:I_CourseVueData) => {
    storageLivePush.value = {
        service,key,timestamp: Date.now()
    }
+}
+
+interface IuserProfile {
+address: string
+areaCode: string
+areaName: string
+avatar: string
+createTime: string
+deptAncestors: string
+deptId: number
+deptName: string
+params: object
+phone: string
+realName: string
+remark: string
+roleIds: string
+ruleAreaCode: string
+ruleAreaName: string
+ruleDeptAncestors: string
+ruleDeptId: number
+ruleDeptName: string
+sex: string
+status: string
+userId: number
+username: string
 }
 
 interface IStorageLivePush {

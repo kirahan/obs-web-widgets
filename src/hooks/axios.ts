@@ -11,11 +11,12 @@ axios.interceptors.request.use(
   config =>{
     // 查看token是否存在
     const token = localStorage.getItem('token') || loginToken.value
-    console.log('config.url',config.url)
+    console.log('config.url',config.url,token)
     if(token && config.url!='/api/v1/token'){
       // @ts-ignore
       config.headers.Authorization ='Bearer '+ token;
     }
+    
     return config
   }
 )
