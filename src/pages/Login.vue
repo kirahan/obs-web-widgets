@@ -51,7 +51,7 @@ export default defineComponent({
   },
   setup(props) {
     const data = reactive({
-      account: "admin",
+      account: "15212341234",
       password: "123456",
       auto_login: false,
     });

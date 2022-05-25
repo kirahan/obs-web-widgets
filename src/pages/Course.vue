@@ -133,7 +133,7 @@ export default defineComponent({
       }
     }
     .userinfo-right{
-        width:200px;
+        width:250px;
         line-height: 50px;
         @include flex(space-around,center,row);
         .username{
