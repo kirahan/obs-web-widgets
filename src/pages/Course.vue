@@ -10,7 +10,7 @@
       
       <div v-if="loginToken" class="userinfo-right">
         <div class="username">欢迎你，{{ username }}</div>
-        <el-popover trigger="click" class="user-popconfirm">
+        <el-popover trigger="click" placement="left" class="user-popconfirm">
           <el-button size="small" class="user-logout-btn" text @click="logout">退出登录</el-button>
           <template #reference>
               <el-avatar v-if="userAvatar == ''" :size="40" :src="defaultAvatar" />
@@ -102,7 +102,7 @@ export default defineComponent({
   .course-info-section {
     text-align: center;
     display: flex;
-    width: 90%;
+    width: 100%;
     // @include flex(center,center,row);
     height: 50px;
     padding: 10px 0px;
@@ -117,6 +117,7 @@ export default defineComponent({
     }
     .page-title {
         flex: 1;
+        padding-left: 155px;
       @include flex(center, center, row);
       div {
         user-select: none;

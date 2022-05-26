@@ -1,16 +1,72 @@
-# Vue 3 + TypeScript + Vite
+## 视联医疗直播助手开发文档
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### Part 1 源码构成
+1. 目录构成
+|
+├── C++端
+|    ├── obs-studio：obs源码
+|    |      ├── build：工程文件
+|    |      └── rundir：编译生成的obs程序目录
+|    ├── dependencies：obs编译的依赖包
+|    |    ├── cef_binary_75.1.14+gc81164e+chromium-75.0.3770.100_windows64：CEF
+|    |    ├── win64：64位版本各种依赖包集合
+|    |    └── qt5.15.2：太大需要自行下载
+|    ├── 打包脚本.nsi
+|    └── obs-studio.ico
+|
+├── web端
+|    └── Vue3+vite+typescript标准项目
+2. 工作原理
+- 登录+课程页面采用web技术开发，C++&Qt来完成推流任务
+- 通过obs自带的CEF，创建一个顶部Qwidget,承载web页面
+- 采用一个browser-worker页面完成通信
+  - CEF和OBS在不同进程中，无法共享数据
+  - 但是输入源中的browser源，可以与cef交互，能够传参和回调
+  - 在登录期间给obs添加一个worker，点击课程列表之后自动销毁worker
+- 通过传参和写入配置文件来实现最小化、关闭、传推流码等JS->CEF交互
 
-## Recommended IDE Setup
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
-## Type Support For `.vue` Imports in TS
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+### Part 2 源码编译
+1. web端 [参考链接](https://www.vitejs.net/guide/static-deploy.html#building-the-app)
+- 依赖：nodejs、npm、vue、vite
+- dev: yarn dev
+- build： yarn build
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+2. obs端 [参考链接](https://github.com/obsproject/obs-studio/wiki/build-instructions-for-windows)
+- 依赖： Cmake、Visual Studio2019、Qt
+- step1 通过cmake构建工程
+  - deps
+  - qt
+  - cef
+- step2 编译运行
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+
+
+
+
+
+
+
+
+### Part 3 源码解析
+1. Web端
+- login
+- course
+- worker
+
+2. obs端
+- window-basic-main.cpp
+- obs-browser插件
+
+### Part 4 打包发布
+- web端
+  - baseUrl
+  - dev
+- obs端
+  - nisi脚本
+  - 素材
+    - obs.png
+    - obs-studio.ico
+
