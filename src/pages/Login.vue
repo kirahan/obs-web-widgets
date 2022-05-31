@@ -32,9 +32,9 @@
       </div>
     </div>
 
-    <div class="login-bottom">
+    <!-- <div class="login-bottom">
       <img src="@/assets/logo-r.png" alt="">
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -51,8 +51,8 @@ export default defineComponent({
   },
   setup(props) {
     const data = reactive({
-      account: "15212341234",
-      password: "123456",
+      account: "",
+      password: "",
       auto_login: false,
     });
 

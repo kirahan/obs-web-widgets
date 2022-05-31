@@ -23,6 +23,7 @@ export const getProfile = ()=>{
 export const getCourse = (page:number=1)=>{
     axiso_get('/api/v1/course-list',{
        courseType: 1,
+       state:1,
        page: page,
        pageSize: paginationData.pageSize
    }).then((res:any)=>{
